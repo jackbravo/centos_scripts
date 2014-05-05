@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yum install -y tomcat6
+
 cd ~/build
 wget http://apache.webxcreen.org/lucene/solr/4.5.1/solr-4.5.1.tgz
 tar -zxf solr-4.5.1.tgz
@@ -22,8 +24,6 @@ tee /etc/tomcat6/Catalina/localhost/solr-drupal.xml <<EOF
   <Environment name="solr/home" type="java.lang.String" value="/opt/solr/drupal/solr" override="true"/>
 </Context>
 EOF
-
-yum install -y tomcat6
 
 /sbin/chkconfig --levels 235 tomcat6 on
 /etc/init.d/tomcat6 start
